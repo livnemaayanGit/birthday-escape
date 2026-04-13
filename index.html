@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Recovery</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Consolas, monospace;
+    background: radial-gradient(circle, #020617, #000);
+    color:#00ffcc;
+    text-align:center;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+.box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 520px;
+    border: 1px solid #00ffcc44;
+    border-radius: 12px;
+    background: #020617cc;
+    box-shadow: 0 0 20px #00ffcc22;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    background: black;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    text-align:center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #00ffcc;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #00ccaa;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+.success {
+    color: #00ff88;
+}
+
+h1 {
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 240px;
+    background: #00ffcc;
+    color: black;
+    text-align: center;
+    padding: 6px;
+    border-radius: 6px;
+
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔐 SYSTEM LOCKED</h1>
+<p>Authenticate to restore the system...</p>
+
+<!-- STEP 1 -->
+<div class="box" id="step1">
+    <p class="tooltip">
+        I bqqz cjsuiebz!
+        <span class="tooltiptext">Move each letter one step back 😉</span>
+    </p>
+
+    <input id="a1">
+    <br>
+    <button onclick="check1()">Check</button>
+    <div id="e1" class="error"></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="box hidden" id="step2">
+    <p class="tooltip">
+        const secret = [70, 65, 77, 73, 76, 89];<br><br>
+        Decode the message.
+        <span class="tooltiptext">ASCII values 😉</span>
+    </p>
+
+    <input id="a2">
+    <br>
+    <button onclick="check2()">Check</button>
+    <div id="e2" class="error"></div>
+</div>
+
+<!-- STEP 3 -->
+<div class="box hidden" id="step3">
+    <p class="tooltip">
+        Combine your core modules to unlock the KEY.
+        <span class="tooltiptext">Think about the people closest to the system 😉</span>
+    </p>
+
+    <input id="a3">
+    <br>
+    <button onclick="check3()">Check</button>
+    <div id="e3" class="error"></div>
+</div>
+
+<!-- STEP 4 -->
+<div class="box hidden" id="step4">
+    <p class="tooltip">
+        In every system design,<br>
+        there is a structure that defines how all components interact.<br><br>
+
+        It is not code,<br>
+        not data,<br>
+        but it defines everything.<br><br>
+
+        What is it?
+        <span class="tooltiptext">Think system design 😉</span>
+    </p>
+
+    <input id="a4">
+    <br>
+    <button onclick="check4()">Check</button>
+    <div id="e4" class="error"></div>
+</div>
+
+<!-- FINAL -->
+<div class="box hidden" id="final">
+    <h2 class="success">🎉 SYSTEM RESTORED 🎉</h2>
+    <p>
+        Access granted ✔️<br><br>
+
+        You didn’t just solve puzzles —<br>
+        you understood the system architecture behind everything.<br><br>
+
+        In software terms:<br>
+        ✔ stable design<br>
+        ✔ correct dependencies<br>
+        ✔ no critical failures<br><br>
+
+        In real life:<br>
+        the strongest system you built... is your family ❤️<br><br>
+
+        Happy Birthday 🎂
+    </p>
+</div>
+
+</div>
+
+<script>
+function normalize(t){
+    return t.trim().toLowerCase();
+}
+
+function error(id, msg){
+    document.getElementById(id).innerText = msg;
+}
+
+function next(cur, nxt){
+    document.getElementById(cur).classList.add("hidden");
+    document.getElementById(nxt).classList.remove("hidden");
+}
+
+/* STEP 1 */
+function check1(){
+    if(normalize(a1.value) == "happy birthday!"){
+        next("step1","step2");
+    } else {
+        error("e1","❌ Incorrect... try again 😈");
+    }
+}
+
+/* STEP 2 */
+function check2(){
+    if(normalize(a2.value) == "family"){
+        next("step2","step3");
+    } else {
+        error("e2","❌ Decode properly 😉");
+    }
+}
+
+/* STEP 3 - PERSONAL NAMES (EDIT HERE) */
+function check3(){
+    let ans = normalize(a3.value);
+
+     if(
+        ans.includes("asia") &&
+        ans.includes("mika") &&
+        ans.includes("roni")
+    ){
+        next("step3","step4");
+    } else {
+        error("e3","❌ Not the correct system modules 😏");
+    }
+}
+
+/* STEP 4 */
+function check4(){
+    let ans = normalize(a4.value);
+
+    if(ans.includes("architecture")){
+        next("step4","final");
+    } else {
+        error("e4","❌ Think bigger - system level 😉");
+    }
+}
+</script>
+
+</body>
+</html>
